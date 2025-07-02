@@ -1,7 +1,11 @@
 import { getCustomerById } from '@/app/actions';
 import { CustomerDetailClientPage } from '@/components/customer-detail-client';
 
-export default async function CustomerDetailPage({ params }: { params: { id: string } }) {
+interface CustomerDetailPageProps {
+  params: { id: string };
+}
+
+export default async function CustomerDetailPage({ params }: CustomerDetailPageProps) {
   const customer = await getCustomerById(params.id);
 
   if (!customer) {
